@@ -1,0 +1,2221 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    101478,       2213]
+NotebookOptionsPosition[     96270,       2140]
+NotebookOutlinePosition[     96648,       2156]
+CellTagsIndexPosition[     96605,       2153]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "Die", " ", "Erstellung", " ", "der", " ", "folgenden", " ", "Listen", 
+     " ", "hab", " ", "ich", " ", "exportiert"}], ",", " ", 
+    RowBox[{
+    "weil", " ", "ich", " ", "sie", " ", "so", " ", "h\[ADoubleDot]ufig", " ",
+      "gebraucht", " ", 
+     RowBox[{"habe", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"germanICPartL", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<D:\\\\Muh\\\\Mathematica\\\\W\[ODoubleDot]rterlisten\\\\\
+germanICPartL.txt\>\"", ",", "\"\<Table\>\"", ",", 
+       RowBox[{"CharacterEncoding", "\[Rule]", "\"\<UTF8\>\""}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"maxL\[ADoubleDot]nge", "=", 
+     RowBox[{"Length", "@", "germanICPartL"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"neighboursList", "=", 
+     RowBox[{"Join", "@@", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+          "\"\<D:\\\\Muh\\\\Mathematica\\\\W\[ODoubleDot]rterlisten\\\\\
+neighbours_\>\"", "<>", 
+           RowBox[{"ToString", "[", "i", "]"}], "<>", "\"\<.wdx\>\""}], ",", 
+          "\"\<WDX\>\""}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "2", ",", "maxL\[ADoubleDot]nge"}], "}"}]}], 
+       "]"}]}]}], ";"}], "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+       "F\[UDoubleDot]r", " ", "Testzwecke", " ", "kann", " ", "diese", " ", 
+        "Liste", " ", "hier", " ", "genommen", " ", 
+        RowBox[{"werden", ".", " ", "Es"}], " ", "kann", " ", "eine", " ", 
+        "beliebige", " ", "\"\<w\[ODoubleDot]rter\>\""}], "-", 
+       RowBox[{"liste", " ", "definiert", " ", 
+        RowBox[{"werden", ".", "\[IndentingNewLine]", "germanICPartL"}], " ", 
+        "und", " ", "neighboursList", " ", "werden", " ", "dann", " ", 
+        "ineffizient", " ", 
+        RowBox[{"erstellt", ".", " ", "Das"}], " ", "geht", " ", "also", " ", 
+        "nicht", " ", "f\[UDoubleDot]r", " ", "l\[ADoubleDot]ngere", " ", 
+        RowBox[{
+        "Listen", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         "w\[ODoubleDot]rter"}]}]}], "=", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<ab\>\"", ",", "\"\<aus\>\"", ",", "\"\<maus\>\"", ",", 
+        "\"\<haus\>\"", ",", "\"\<kaue\>\"", ",", "\"\<kauen\>\"", ",", 
+        "\"\<alter\>\"", ",", "\"\<alte\>\"", ",", "\"\<trinken\>\"", ",", 
+        "\"\<nehmen\>\"", ",", "\"\<nehme\>\"", ",", "\"\<nehmer\>\"", ",", 
+        "\"\<nahmst\>\"", ",", "\"\<nahm\>\"", ",", "\"\<nahmt\>\"", ",", 
+        "\"\<nehmt\>\"", ",", "\"\<remis\>\"", ",", "\"\<bruder\>\"", ",", 
+        "\"\<martin\>\"", ",", "\"\<martini\>\"", ",", 
+        "\"\<ohrst\[ODoubleDot]psel\>\"", ",", "\"\<klaus\>\"", ",", 
+        "\"\<klause\>\"", ",", "\"\<klausel\>\"", ",", "\"\<klauseln\>\"", 
+        ",", "\"\<altern\>\""}], "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"maxL\[ADoubleDot]nge", "=", 
+      RowBox[{"Max", "[", 
+       RowBox[{"StringLength", "/@", "w\[ODoubleDot]rter"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"germanICPartL", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Cases", "[", 
+         RowBox[{"w\[ODoubleDot]rter", ",", 
+          RowBox[{"x_", "/;", 
+           RowBox[{
+            RowBox[{"StringLength", "[", "x", "]"}], "\[Equal]", "i"}]}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"maxL\[ADoubleDot]nge", "+", "1"}]}], "}"}]}], "]"}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"neighboursList", "=", 
+      RowBox[{"Association", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"w", "\[Rule]", 
+          RowBox[{"Cases", "[", 
+           RowBox[{"w\[ODoubleDot]rter", ",", 
+            RowBox[{"x_", "/;", 
+             RowBox[{
+              RowBox[{"DamerauLevenshteinDistance", "[", 
+               RowBox[{"w", ",", "x"}], "]"}], "\[Equal]", "1"}]}]}], "]"}]}],
+          ",", 
+         RowBox[{"{", 
+          RowBox[{"w", ",", "w\[ODoubleDot]rter"}], "}"}]}], "]"}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Graph", "[", 
+      RowBox[{
+       RowBox[{"Union", "@", 
+        RowBox[{"Flatten", "@", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"w", "\[UndirectedEdge]", "n"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"w", ",", 
+             RowBox[{"Flatten", "@", "germanICPartL"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"n", ",", 
+             RowBox[{"neighboursList", "[", "w", "]"}]}], "}"}]}], "]"}]}]}], 
+       ",", 
+       RowBox[{"VertexLabels", "\[Rule]", "Automatic"}]}], "]"}]}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Wir", " ", "nutzen", " ", "germanICPartL"}], ",", " ", 
+     RowBox[{
+     "also", " ", "die", " ", "W\[ODoubleDot]rter", " ", "partitioniert", " ",
+       "nach", " ", "L\[ADoubleDot]nge"}], ",", " ", 
+     RowBox[{
+     "damit", " ", "nicht", " ", "immer", " ", "die", " ", "ganze", " ", 
+      "Liste", " ", "durchsucht", " ", "werden", " ", 
+      RowBox[{"muss", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Man", " ", "kann", " ", "beobachten"}], ",", " ", 
+     RowBox[{
+     "dass", " ", "\[UDoubleDot]ber", " ", "die", " ", "H\[ADoubleDot]lfte", 
+      " ", "der", " ", "Eintr\[ADoubleDot]ge", " ", "in", " ", 
+      "\"\<germanIC\>\"", " ", "entweder", " ", "isolierte", " ", "Knoten", 
+      " ", "oder", " ", "isolierte", " ", "Paare", " ", 
+      RowBox[{"sind", ".", " ", "Diese"}], " ", "k\[ODoubleDot]nnen", " ", 
+      "wir", " ", "zuerst", " ", "mal", " ", "aussortieren"}], ",", " ", 
+     RowBox[{
+     "um", " ", "deutlich", " ", "mehr", " ", "als", " ", "Faktor", " ", "4", 
+      " ", "in", " ", "der", " ", "Hauptschlefie", " ", "zu", " ", 
+      RowBox[{"sparen", ".", " ", "Faktor"}], " ", "4", " ", "wegen", " ", 
+      "quadratischer", " ", "Laufzeit"}], ",", " ", 
+     RowBox[{"au\[SZ]erdem", " ", "deutlich", " ", "mehr"}], ",", " ", 
+     RowBox[{
+     "da", " ", "die", " ", "Komponenten", " ", "da", " ", "schneller", " ", 
+      "wachsen"}], ",", " ", 
+     RowBox[{
+     "als", " ", "wenn", " ", "in", " ", "vielen", " ", 
+      "Durchl\[ADoubleDot]ufen", " ", "einfach", " ", "isolierte", " ", 
+      "Paare", " ", "betrachtet", " ", 
+      RowBox[{"werden", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "Eine", " ", "leere", " ", "Liste", " ", "an", " ", "germanICPartL", " ",
+       "anh\[ADoubleDot]ngen"}], ",", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"damit", " ", ".."}], "\[LeftDoubleBracket]", 
+       RowBox[{"maxL\[ADoubleDot]nge", "+", "1"}], "\[RightDoubleBracket]"}], 
+      " ", "keinen", " ", "Fehler", " ", 
+      RowBox[{"ausgibt", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"AppendTo", "[", 
+     RowBox[{"germanICPartL", ",", 
+      RowBox[{"{", "}"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "isolierteKnoten", " ", "sind", " ", "offenbar", " ", "alle", " ", 
+      "isolierte", " ", "Knoten"}], ",", " ", 
+     RowBox[{"aber", " ", "sortiert", " ", "nach", " ", 
+      RowBox[{"L\[ADoubleDot]nge", "."}]}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"isolierteKnoten", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{
+         "germanICPartL", "\[LeftDoubleBracket]", "i", 
+          "\[RightDoubleBracket]"}], ",", 
+         RowBox[{"x_", "/;", 
+          RowBox[{
+           RowBox[{"neighboursList", "[", "x", "]"}], "\[Equal]", 
+           RowBox[{"{", "}"}]}]}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "maxL\[ADoubleDot]nge"}], "}"}]}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Diese", " ", "isolierten", " ", "Knoten", " ", "m\[UDoubleDot]ssen", " ",
+      "wir", " ", "nicht", " ", "mehr", " ", 
+     RowBox[{"betrachten", ".", " ", "Wir"}], " ", "exportieren", " ", "sie", 
+     " ", "also", " ", "separat", " ", "und", " ", "entfernen", " ", "sie", 
+     " ", "aus", " ", "neighboursList", " ", "und", " ", 
+     RowBox[{"germanICPartL", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Export", "[", 
+      RowBox[{
+      "\"\<D:\\\\Muh\\\\Mathematica\\\\W\[ODoubleDot]rterlisten\\\\\
+Levenshtein_isolierte_Knoten.list\>\"", ",", 
+       RowBox[{"Flatten", "@", "isolierteKnoten"}], ",", "\"\<List\>\""}], 
+      "]"}], ";"}], "*)"}], "\n", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "germanICPartL", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+       "=", 
+      RowBox[{"Complement", "[", 
+       RowBox[{
+        RowBox[{
+        "germanICPartL", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}], ",", 
+        RowBox[{
+        "isolierteKnoten", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "maxL\[ADoubleDot]nge"}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"neighboursList", "[", "w", "]"}], "=."}], ",", 
+     RowBox[{"{", 
+      RowBox[{"w", ",", 
+       RowBox[{"Flatten", "@", "isolierteKnoten"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "So", " ", "sparen", " ", "wir", " ", "schon", " ", "mal", " ", "viele", 
+     " ", 
+     RowBox[{"W\[ODoubleDot]rter", ":"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Es gibt \>\"", ",", 
+     RowBox[{
+      RowBox[{"Length", "/@", "isolierteKnoten"}], "//", "Total"}], ",", 
+     "\"\< isolierte W\[ODoubleDot]rter.\>\""}], "]"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Alle", " ", "W\[ODoubleDot]rter"}], ",", " ", 
+     RowBox[{"die", " ", "nur", " ", "einen", " ", "Nachbarn", " ", "haben"}],
+      ",", " ", 
+     RowBox[{
+     "k\[ODoubleDot]nnen", " ", "auch", " ", "separat", " ", "behandelt", " ", 
+      RowBox[{"werden", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"komponentenListe", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Erkl\[ADoubleDot]rung", " ", "hierf\[UDoubleDot]r", " ", "siehe", " ", 
+     "unten", " ", "bei", " ", 
+     RowBox[{"\"\<nachAu\[SZ]en\>\"", "."}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nachAu\[SZ]enList", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Der", " ", "Counter", " ", "c1N", " ", "z\[ADoubleDot]hlt"}], 
+     ",", " ", 
+     RowBox[{
+     "wie", " ", "oft", " ", "wir", " ", "W\[ODoubleDot]rter", " ", "mit", 
+      " ", "genau", " ", "einem", " ", "Nachbarn", " ", "entfernen"}]}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"c1N", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"While", "[", 
+    RowBox[{"True", ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "Hier", " ", "erzeugen", " ", "wir", " ", "alle", " ", 
+       "W\[ODoubleDot]rter", " ", "mit", " ", "genau", " ", "einem", " ", 
+       RowBox[{"Nachbarn", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"einNachbar", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Cases", "[", 
+          RowBox[{
+           RowBox[{
+           "germanICPartL", "\[LeftDoubleBracket]", "i", 
+            "\[RightDoubleBracket]"}], ",", 
+           RowBox[{"x_", "/;", 
+            RowBox[{
+             RowBox[{"Length", "[", 
+              RowBox[{"neighboursList", "[", "x", "]"}], "]"}], "\[Equal]", 
+             "1"}]}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "maxL\[ADoubleDot]nge"}], "}"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Hier", " ", "lassen", " ", "sich", " ", "wieder", " ", "viele", " ", 
+        "W\[ODoubleDot]rter", " ", 
+        RowBox[{"sparen", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Es gibt nun \>\"", ",", 
+        RowBox[{
+         RowBox[{"Length", "/@", "einNachbar"}], "//", "Total"}], ",", 
+        "\"\< W\[ODoubleDot]rter mit genau einem Nachbarn.\>\""}], "]"}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Nach", " ", "einigen", " ", "Durchg\[ADoubleDot]ngen", " ", "ist", 
+        " ", "einNachbar", " ", "klein", " ", "und", " ", "wir", " ", "geben",
+         " ", "es", " ", 
+        RowBox[{"aus", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Total", "[", 
+          RowBox[{"Length", "/@", "einNachbar"}], "]"}], "<", "50"}], ",", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<Flatten@einNachbar: \>\"", ",", 
+          RowBox[{"Flatten", "@", "einNachbar"}]}], "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"c1N", "\[Equal]", "100"}], ",", 
+        RowBox[{"Break", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "Falls", " ", "es", " ", "kein", " ", "Wort", " ", "mit", " ", 
+         "genau", " ", "einem", " ", "Nachbarn", " ", "mehr", " ", "gibt"}], 
+        ",", " ", 
+        RowBox[{"brechen", " ", "wir", " ", 
+         RowBox[{"ab", ":"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Total", "[", 
+          RowBox[{"Length", "/@", "einNachbar"}], "]"}], "\[Equal]", "0"}], 
+        ",", 
+        RowBox[{"Break", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "Hier", " ", "betrachten", " ", "wir", " ", "alle", " ", 
+         "einNachbarn"}], ",", " ", 
+        RowBox[{"mit", " ", "entsprechenden", " ", 
+         RowBox[{"Nachbar", ".", " ", "Alle"}], " ", "Eintr\[ADoubleDot]ge"}],
+         ",", " ", 
+        RowBox[{"die", " ", "dann", " ", "doppelt", " ", "vorkommen"}], ",", 
+        " ", 
+        RowBox[{"m\[UDoubleDot]ssen", " ", "EinNachbar"}], "\[Dash]", 
+        RowBox[{"EinNachbar", " ", "Paare", " ", "sein"}], ",", " ", 
+        RowBox[{"also", " ", "isolierte", " ", 
+         RowBox[{"Paare", ".", " ", "Diese"}], " ", "k\[ODoubleDot]nnen", " ",
+          "also", " ", "direkt", " ", "als", " ", "Zusammenhangskomponente", 
+         " ", "exportiert", " ", "werden", " ", "und", " ", 
+         "m\[UDoubleDot]ssen", " ", "nicht", " ", "mehr", " ", "betrachtet", 
+         " ", 
+         RowBox[{"werden", "."}]}]}], "\[IndentingNewLine]", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"isoliertePaare", "=", 
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{"Tally", "[", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+            RowBox[{
+            "Hier", " ", "f\[UDoubleDot]gen", " ", "wir", " ", "den", " ", 
+             "entsprechenden", " ", "Nachbarn", " ", 
+             RowBox[{"hinzu", ":", "  ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"...", " ", 
+                 RowBox[{"{", 
+                  RowBox[{"wort", ",", " ", "nachbar"}], "}"}]}], "..."}], 
+               " ", "\[IndentingNewLine]", "Flatten"}]}]}], ",", " ", 
+            RowBox[{
+            "weil", " ", "neighboursList", " ", "immer", " ", "eine", " ", 
+             "Liste", " ", 
+             RowBox[{"ist", ".", "\[IndentingNewLine]", "Sort"}]}], ",", " ", 
+            RowBox[{
+            "damit", " ", "wir", " ", "danach", " ", "Tally", " ", "anwenden",
+              " ", "k\[ODoubleDot]nnen"}]}], " ", "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"x", "\[Function]", 
+             RowBox[{"Sort", "@", 
+              RowBox[{"Flatten", "[", 
+               RowBox[{"{", 
+                RowBox[{"x", ",", 
+                 RowBox[{"neighboursList", "[", "x", "]"}]}], "}"}], 
+               "]"}]}]}], ")"}], "/@", 
+           RowBox[{"Flatten", "[", "einNachbar", "]"}]}], 
+          "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{
+           "In", " ", "diesem", " ", "Tally", " ", "suchen", " ", "wir", " ", 
+            "alle", " ", "Paare"}], ",", " ", 
+           RowBox[{"die", " ", "doppelt", " ", "vorkommen"}], ",", " ", 
+           RowBox[{
+            RowBox[{"also", " ", "deren", " ", "zweiter", " ", "Tally"}], "-", 
+            RowBox[{"Eintrag", " ", "2", " ", 
+             RowBox[{"ist", ".", "\[IndentingNewLine]", "Die"}], " ", "2", 
+             " ", "wird", " ", "dann", " ", "aber", " ", "nicht", " ", "mehr",
+              " ", "ben\[ODoubleDot]tigt"}]}], ",", " ", 
+           RowBox[{
+            RowBox[{
+            "also", " ", "k\[ODoubleDot]nnen", " ", "wir", " ", "gleich", " ",
+              "aus", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"v", ",", "w"}], "}"}], ",", "2"}], "}"}]}], " ", 
+            "\[Rule]", " ", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"v", ",", "w"}], "}"}], " ", 
+             RowBox[{"machen", ".", " ", "Daf\[UDoubleDot]r"}], " ", "das", 
+             " ", "\"\<->x\[LeftDoubleBracket]1\[RightDoubleBracket]\>\""}]}]}\
+], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"x_", "/;", 
+           RowBox[{
+            RowBox[{
+            "x", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+            "\[Equal]", "2"}]}], "\[Rule]", 
+          RowBox[{
+          "x", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Es gibt nun \>\"", ",", 
+        RowBox[{"Length", "@", "isoliertePaare"}], ",", 
+        "\"\< isolierte Paare, die nun eine eigene Zusammenhangskomponenten \
+bilden.\>\""}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"c1N", "++"}], ">", "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "Die", " ", "isolierten", " ", "Paare", " ", "bilden", " ", 
+          "jeweils", " ", "eine", " ", "eigene", " ", 
+          RowBox[{"Zusammenhansgkomponente", ":"}]}], "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"komponentenListe", "=", 
+         RowBox[{"Join", "[", 
+          RowBox[{"komponentenListe", ",", "isoliertePaare"}], "]"}]}]}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+         "Behandele", " ", "den", " ", "ersten", " ", "Durchlauf", " ", 
+          "unterschiedlich"}], ",", " ", 
+         RowBox[{
+         "weil", " ", "die", " ", "isolierten", " ", "Paar", " ", "im", " ", 
+          "Ursprungsgraphen", " ", "separat", " ", "exportiert", " ", 
+          "werden", " ", 
+          RowBox[{"sollen", "."}]}], " ", "\[IndentingNewLine]", ",", 
+         RowBox[{
+          RowBox[{"Export", "[", 
+           RowBox[{
+           "\"\<D:\\\\Muh\\\\Mathematica\\\\W\[ODoubleDot]rterlisten\\\\\
+Levenshtein_isolierte_Paare.table\>\"", ",", "isoliertePaare", ",", 
+            "\"\<Table\>\""}], "]"}], ";"}]}], "\[IndentingNewLine]", "*)"}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "Das", " ", "hier", " ", "sind", " ", "die", " ", "restlichen", " ", 
+         "EinNachbarn"}], ",", " ", 
+        RowBox[{"also", " ", "die", " ", "w\[ODoubleDot]rter"}], ",", " ", 
+        RowBox[{
+        "die", " ", "nur", " ", "einen", " ", "Nachbar", " ", "haben"}], ",", 
+        " ", 
+        RowBox[{
+        "aber", " ", "nicht", " ", "Teil", " ", "eines", " ", "isolierten", 
+         " ", "Paares", " ", 
+         RowBox[{"sind", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"restlicheEinNachbarn", "=", 
+       RowBox[{"Complement", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "@", "einNachbar"}], ",", 
+         RowBox[{"Flatten", "@", "isoliertePaare"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "nach", " ", "Au\[SZ]en", " ", "zeigt", " ", "von", " ", "den", " ", 
+         "W\[ODoubleDot]rter"}], ",", " ", 
+        RowBox[{
+        "die", " ", "mehr", " ", "als", " ", "ein", " ", "Nachbar", " ", 
+         "haben", " ", 
+         RowBox[{"(", "\"\<innere W\[ODoubleDot]rter\>\"", ")"}], " ", "auf", 
+         " ", "die", " ", "W\[ODoubleDot]rter"}], ",", " ", 
+        RowBox[{
+        "die", " ", "nur", " ", "ein", " ", "Nachbarn", " ", "haben", " ", 
+         RowBox[{
+          RowBox[{
+          "(", "\"\<\[ADoubleDot]u\[SZ]ere W\[ODoubleDot]rter\>\"", ")"}], 
+          ".", " ", "Da"}], " ", "wir", " ", "nach", " ", "Wegnehmen", " ", 
+         "der", " ", "\[ADoubleDot]u\[SZ]eren", " ", "W\[ODoubleDot]rter", 
+         " ", "neue", " ", "\[ADoubleDot]u\[SZ]ere", " ", 
+         "W\[ODoubleDot]rter", " ", "bekommen", " ", "k\[ODoubleDot]nnen"}], 
+        ",", " ", 
+        RowBox[{
+        "ist", " ", "\"\<nachAu\[SZ]en\>\"", " ", "im", " ", "jeden", " ", 
+         "Schritt", " ", "anders", " ", "und", " ", "wird", " ", "in", " ", 
+         "der", " ", "\"\<nachAu\[SZ]enList\>\"", " ", 
+         RowBox[{"gespeichert", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"nachAu\[SZ]en", "=", 
+       RowBox[{"<|", "|>"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "Das", " ", "Wort", " ", "\"\<innen\>\"", " ", "ist", " ", "der", " ",
+          "eindeutige", " ", "Nachbar", " ", "des", " ", "Wortes", " ", 
+         RowBox[{"au\[SZ]en", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"innen", "=", 
+          RowBox[{
+           RowBox[{"neighboursList", "[", "au\[SZ]en", "]"}], 
+           "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "Die", " ", "W\[ODoubleDot]rter", " ", "innen", " ", "sollen", " ", 
+           "nicht", " ", "mehr", " ", "nach", " ", "au\[SZ]en", " ", 
+           RowBox[{"zeigen", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"neighboursList", "[", "innen", "]"}], "=", 
+          RowBox[{"Complement", "[", 
+           RowBox[{
+            RowBox[{"neighboursList", "[", "innen", "]"}], ",", 
+            RowBox[{"{", "au\[SZ]en", "}"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{
+           "Daf\[UDoubleDot]r", " ", "sollen", " ", "die", " ", 
+            "W\[ODoubleDot]rter", " ", "innen", " ", "durch", " ", "eine", 
+            " ", "spezielle", " ", "Liste", " ", "nach", " ", "au\[SZ]en", 
+            " ", "zeigen"}], ",", " ", 
+           RowBox[{
+           "die", " ", "wir", " ", "anwenden", " ", "k\[ODoubleDot]nnen"}], 
+           ",", " ", 
+           RowBox[{
+           "nachdem", " ", "wir", " ", "die", " ", "Zusammenhangskomponente", 
+            " ", "berechnet", " ", 
+            RowBox[{"haben", ".", " ", "Da"}], " ", "ein", " ", "Wort", " ", 
+            "innen", " ", "auf", " ", "mehrere", " ", "W\[ODoubleDot]rter", 
+            " ", "au\[SZ]en", " ", "zeigen", " ", "kann"}], ",", " ", 
+           RowBox[{"m\[UDoubleDot]ssen", " ", "wir", " ", "\"\<Join\>\"", " ", 
+            RowBox[{"anwenden", "."}]}]}], "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"nachAu\[SZ]en", "[", "innen", "]"}], "=", 
+          RowBox[{"Join", "[", 
+           RowBox[{
+            RowBox[{"Lookup", "[", 
+             RowBox[{"nachAu\[SZ]en", ",", "innen", ",", 
+              RowBox[{"{", "}"}]}], "]"}], ",", 
+            RowBox[{"{", "au\[SZ]en", "}"}]}], "]"}]}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"au\[SZ]en", ",", "restlicheEinNachbarn"}], "}"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"nachAu\[SZ]enList", ",", "nachAu\[SZ]en"}], "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Die", " ", "EinNachbarn", " ", "haben", " ", "wir", " ", "nun", " ", 
+        "fertig", " ", 
+        RowBox[{"behandelt", ".", " ", "Wir"}], " ", "k\[ODoubleDot]nnen", 
+        " ", "sie", " ", "also", " ", "nun", " ", "komplett", " ", "aus", " ",
+         "germanPartL", " ", "und", " ", "auch", " ", "aus", " ", "der", " ", 
+        "neighboursList", " ", 
+        RowBox[{"streichen", "."}]}], "\[IndentingNewLine]", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+         "germanICPartL", "\[LeftDoubleBracket]", "i", 
+          "\[RightDoubleBracket]"}], "=", 
+         RowBox[{"Complement", "[", 
+          RowBox[{
+           RowBox[{
+           "germanICPartL", "\[LeftDoubleBracket]", "i", 
+            "\[RightDoubleBracket]"}], ",", 
+           RowBox[{
+           "einNachbar", "\[LeftDoubleBracket]", "i", 
+            "\[RightDoubleBracket]"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "maxL\[ADoubleDot]nge"}], "}"}]}], "]"}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"neighboursList", "[", "w", "]"}], "=."}], ",", 
+        RowBox[{"{", 
+         RowBox[{"w", ",", 
+          RowBox[{"Flatten", "@", "einNachbar"}]}], "}"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "Bereinige", " ", "hier", " ", "nochmal", " ", "die", " ", "isolierten", 
+      " ", 
+      RowBox[{"Knoten", ".", " ", "Hier"}], " ", "steht", " ", "fast", " ", 
+      "das", " ", "Gleiche", " ", "wie", " ", "am", " ", 
+      RowBox[{"Anfang", ".", " ", "Allerdings"}], " ", "werden", " ", "hier", 
+      " ", "die", " ", "isolierten", " ", "Knoten", " ", "nicht", " ", 
+      "exportiert"}], ",", " ", 
+     RowBox[{"sondern", " ", "in", " ", "die", " ", "komponentenListe", " ", 
+      RowBox[{"gesteckt", "."}]}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"isolierteKnoten", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{
+         "germanICPartL", "\[LeftDoubleBracket]", "i", 
+          "\[RightDoubleBracket]"}], ",", 
+         RowBox[{"x_", "/;", 
+          RowBox[{
+           RowBox[{"neighboursList", "[", "x", "]"}], "\[Equal]", 
+           RowBox[{"{", "}"}]}]}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "maxL\[ADoubleDot]nge"}], "}"}]}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"komponentenListe", "=", 
+     RowBox[{"Join", "[", 
+      RowBox[{"komponentenListe", ",", 
+       RowBox[{"Partition", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "@", "isolierteKnoten"}], ",", "1"}], "]"}]}], 
+      "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+       "germanICPartL", "\[LeftDoubleBracket]", "i", 
+        "\[RightDoubleBracket]"}], "=", 
+       RowBox[{"Complement", "[", 
+        RowBox[{
+         RowBox[{
+         "germanICPartL", "\[LeftDoubleBracket]", "i", 
+          "\[RightDoubleBracket]"}], ",", 
+         RowBox[{
+         "isolierteKnoten", "\[LeftDoubleBracket]", "i", 
+          "\[RightDoubleBracket]"}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "maxL\[ADoubleDot]nge"}], "}"}]}], "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"neighboursList", "[", "w", "]"}], "=."}], ",", 
+      RowBox[{"{", 
+       RowBox[{"w", ",", 
+        RowBox[{"Flatten", "@", "isolierteKnoten"}]}], "}"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "So", " ", "sparen", " ", "wir", " ", "wieder", " ", "einige", " ", 
+     "viele", " ", 
+     RowBox[{"W\[ODoubleDot]rter", ":"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Es gibt \>\"", ",", 
+     RowBox[{
+      RowBox[{"Length", "/@", "isolierteKnoten"}], "//", "Total"}], ",", 
+     "\"\< isolierte W\[ODoubleDot]rter nach Entfernen der \
+\\\"EinNachbarn\\\".\>\""}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Graphen", " ", 
+      RowBox[{"ausgeben", ".", " ", "Das"}], " ", "geht", " ", 
+      "nat\[UDoubleDot]rlich", " ", "nur", " ", "im", " ", "Testmodus"}], ",",
+      " ", 
+     RowBox[{"wenn", " ", "der", " ", "Graph", " ", "klein", " ", 
+      RowBox[{"ist", ".", " ", "\[IndentingNewLine]", 
+       RowBox[{"Graph", "[", 
+        RowBox[{
+         RowBox[{"Union", "@", 
+          RowBox[{"Flatten", "@", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Sort", "[", 
+              RowBox[{"w", "\[UndirectedEdge]", "n"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"w", ",", 
+               RowBox[{"Flatten", "@", "germanICPartL"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"n", ",", 
+               RowBox[{"neighboursList", "[", "w", "]"}]}], "}"}]}], 
+            "]"}]}]}], ",", 
+         RowBox[{"VertexLabels", "\[Rule]", "Automatic"}]}], "]"}]}]}]}], 
+    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "Nun", " ", "haben", " ", "wir", " ", "nur", " ", "noch", " ", 
+       "W\[ODoubleDot]rter", " ", "mit", " ", "mindestens", " ", "zwei", " ", 
+       RowBox[{
+       "Nachbarn", ".", " ", "\[IndentingNewLine]", "l\[ADoubleDot]"}]}], "=",
+       "1"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"c", "=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{"True", ",", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+         "Falls", " ", "es", " ", "keinen", " ", "mit", " ", "Lange", " ", 
+          "l\[ADoubleDot]", " ", "mehr", " ", "gibt"}], ",", " ", 
+         RowBox[{"erh\[ODoubleDot]re", " ", "l\[ADoubleDot]", " ", "um", " ", 
+          RowBox[{"eins", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"While", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"l\[ADoubleDot]", "\[LessEqual]", "maxL\[ADoubleDot]nge"}],
+            "&&", 
+           RowBox[{
+            RowBox[{"Length", "[", 
+             RowBox[{
+             "germanICPartL", "\[LeftDoubleBracket]", "l\[ADoubleDot]", 
+              "\[RightDoubleBracket]"}], "]"}], "\[Equal]", "0"}]}], ",", 
+          RowBox[{"l\[ADoubleDot]", "++"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+          "Wenn", " ", "die", " ", "L\[ADoubleDot]nge", " ", "das", " ", 
+           "Maximum", " ", "\[UDoubleDot]berschritten", " ", "hat"}], ",", 
+          " ", 
+          RowBox[{"sind", " ", "wir", " ", 
+           RowBox[{"fertig", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"l\[ADoubleDot]", ">", "maxL\[ADoubleDot]nge"}], ",", 
+          RowBox[{"Break", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "Nun", " ", "nehme", " ", "das", " ", "erste", " ", "Wort", " ", 
+          "in", " ", 
+          RowBox[{"germanICPartL", "."}]}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"aktuell", "=", 
+         RowBox[{"{", 
+          RowBox[{"germanICPartL", "\[LeftDoubleBracket]", 
+           RowBox[{"l\[ADoubleDot]", ",", "1"}], "\[RightDoubleBracket]"}], 
+          "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"Mod", "[", 
+             RowBox[{
+              RowBox[{"c", "++"}], ",", "1000"}], "]"}], "\[Equal]", "0"}], "||", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"c", "<", "1000"}], "&&", 
+             RowBox[{
+              RowBox[{"Mod", "[", 
+               RowBox[{"c", ",", "10"}], "]"}], "\[Equal]", "0"}]}], ")"}]}], 
+          ",", 
+          RowBox[{"Print", "[", 
+           RowBox[{
+           "\"\<aktuell: \>\"", ",", "aktuell", ",", "\"\<. Noch \>\"", ",", 
+            RowBox[{"Total", "[", 
+             RowBox[{"Length", "/@", "germanICPartL"}], "]"}], ",", 
+            "\"\< W\[ODoubleDot]rter\>\""}], "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "Hier", " ", "wird", " ", "die", " ", "Zusammenhangskomponente", " ",
+           "des", " ", "aktuellen", " ", "Wortes", " ", 
+          RowBox[{"berechnet", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"komponente", "=", "aktuell"}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+         "germanICPartL", "\[LeftDoubleBracket]", "l\[ADoubleDot]", 
+          "\[RightDoubleBracket]"}], "=", 
+         RowBox[{"Rest", "[", 
+          RowBox[{
+          "germanICPartL", "\[LeftDoubleBracket]", "l\[ADoubleDot]", 
+           "\[RightDoubleBracket]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"While", "[", 
+         RowBox[{"True", ",", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+            RowBox[{
+            "aktuell", " ", "sind", " ", "alle", " ", "Nachbarn", " ", "von", 
+             " ", "den", " ", "davor", " ", 
+             RowBox[{"betrachteten", ".", " ", "Die"}]}], ",", " ", 
+            RowBox[{
+            "die", " ", "wir", " ", "schon", " ", "betrachtet", " ", "haben", 
+             " ", 
+             RowBox[{"(", "komponente", ")"}]}], ",", " ", 
+            RowBox[{"werden", " ", 
+             RowBox[{"rausgeschmissen", "."}]}]}], " ", "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"aktuell", "=", 
+            RowBox[{"Complement", "[", 
+             RowBox[{
+              RowBox[{"Union", "@", 
+               RowBox[{"Flatten", "[", 
+                RowBox[{"neighboursList", "/@", "aktuell"}], "]"}]}], ",", 
+              "komponente"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"Wenn", " ", "aktuell", " ", "leer", " ", "ist"}], ",", 
+             " ", 
+             RowBox[{
+             "haben", " ", "wir", " ", "die", " ", "ganze", " ", "Komponente",
+               " ", "also", " ", 
+              RowBox[{"erreicht", "."}]}]}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", "aktuell", "]"}], "\[Equal]", "0"}], ",", 
+             RowBox[{"Break", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "Alle", " ", "aktuellen", " ", "W\[ODoubleDot]rter", " ", 
+             "werden", " ", "in", " ", "die", " ", "komponente", " ", 
+             "aufgenommen"}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"komponente", "=", 
+            RowBox[{"Join", "[", 
+             RowBox[{"komponente", ",", "aktuell"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{"germanICPartL", " ", "wird", " ", 
+             RowBox[{"angepasst", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"Do", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+              "germanICPartL", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "=", 
+              RowBox[{"Complement", "[", 
+               RowBox[{
+                RowBox[{
+                "germanICPartL", "\[LeftDoubleBracket]", "i", 
+                 "\[RightDoubleBracket]"}], ",", 
+                RowBox[{"Cases", "[", 
+                 RowBox[{"aktuell", ",", 
+                  RowBox[{"x_", "/;", 
+                   RowBox[{
+                    RowBox[{"StringLength", "[", "x", "]"}], "\[Equal]", 
+                    "i"}]}]}], "]"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", "maxL\[ADoubleDot]nge"}], "}"}]}], 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"komponentenListe", ",", "komponente"}], "]"}]}]}], 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.763135988420709*^9, 3.763135991076861*^9}, {
+   3.7631361855389833`*^9, 3.7631361859220057`*^9}, {3.7631370487573566`*^9, 
+   3.763137063276187*^9}, {3.763137094828992*^9, 3.763137103171469*^9}, {
+   3.763141174503336*^9, 3.763141176967477*^9}, {3.76582518801145*^9, 
+   3.765825191084655*^9}, {3.765825244545949*^9, 3.765825277758407*^9}, 
+   3.765825322015685*^9, {3.7658255220860367`*^9, 3.7658256306466265`*^9}, {
+   3.7660438893353167`*^9, 3.766043892626922*^9}, {3.766044274562393*^9, 
+   3.7660443109104567`*^9}, 3.766077630597649*^9, {3.766307695766011*^9, 
+   3.7663077287960577`*^9}, {3.7663081835366945`*^9, 
+   3.7663081937067084`*^9}, {3.766308226236754*^9, 3.7663082272767553`*^9}, {
+   3.7663087710415173`*^9, 3.766308790701545*^9}, {3.766594599154269*^9, 
+   3.7665946124200277`*^9}, {3.7666893912601027`*^9, 
+   3.7666894327249756`*^9}, {3.8485950050492325`*^9, 
+   3.8485950116492414`*^9}, {3.8485950455392895`*^9, 
+   3.8485950672993193`*^9}, {3.848595140805425*^9, 3.848595168455464*^9}, {
+   3.8492409303993607`*^9, 3.8492409883690624`*^9}, {3.849241106118069*^9, 
+   3.8492411096124754`*^9}, {3.8492443591195836`*^9, 3.84924436353459*^9}, {
+   3.849244940185397*^9, 3.8492449602504253`*^9}, {3.849245064620571*^9, 
+   3.8492452795992174`*^9}, {3.849246323250678*^9, 3.8492463831207623`*^9}, {
+   3.849246639261121*^9, 3.8492466406161227`*^9}, {3.84924954409326*^9, 
+   3.849249545593262*^9}, {3.849268050630085*^9, 3.8492681342462316`*^9}, {
+   3.8492688288842516`*^9, 3.8492688732039294`*^9}, {3.849269000284753*^9, 
+   3.849269004746361*^9}, 3.8492690456060343`*^9, 3.8492699517626286`*^9, {
+   3.8493184276321735`*^9, 3.8493184691282463`*^9}, {3.8493185609032073`*^9, 
+   3.8493185853952503`*^9}, {3.849318679167015*^9, 3.849318769403974*^9}, {
+   3.84961291866*^9, 3.849612936550025*^9}, {3.849612981120087*^9, 
+   3.8496129843000917`*^9}, {3.8496130230601463`*^9, 3.849613243790455*^9}, {
+   3.8496133890706587`*^9, 3.8496134126206913`*^9}, {3.8496134669507675`*^9, 
+   3.849613553070888*^9}, {3.8496142311518373`*^9, 3.8496143534220085`*^9}, {
+   3.849614387322056*^9, 3.849614463092162*^9}, {3.84961457590232*^9, 
+   3.849614580412326*^9}, {3.8496146250523887`*^9, 3.8496147271925316`*^9}, {
+   3.8496147625925813`*^9, 3.8496151217730837`*^9}, {3.8496151558031316`*^9, 
+   3.849615274973298*^9}, {3.8496153106333485`*^9, 3.8496154556035514`*^9}, {
+   3.8496155029636173`*^9, 3.8496155305136566`*^9}, {3.8496155936237445`*^9, 
+   3.849615752193967*^9}, {3.849616157814534*^9, 3.849616177554562*^9}, {
+   3.849616493215004*^9, 3.849616534075061*^9}, {3.849616568145109*^9, 
+   3.849616613935173*^9}, {3.849616721936324*^9, 3.849616779386405*^9}, {
+   3.8496168161274567`*^9, 3.8496168741575375`*^9}, {3.8496171476179204`*^9, 
+   3.849617174607958*^9}, 3.849617335798184*^9, {3.8496174079282846`*^9, 
+   3.849617597988551*^9}, {3.849617908718986*^9, 3.8496179322290187`*^9}, {
+   3.8496180034191184`*^9, 3.849618031289158*^9}, {3.8496183597896175`*^9, 
+   3.8496183811796474`*^9}, {3.859521409773627*^9, 3.8595214126936307`*^9}, {
+   3.8595214653937044`*^9, 3.859521468383709*^9}, {3.8595215196447806`*^9, 
+   3.859521519714781*^9}},ExpressionUUID->"2059afea-0670-4417-bbff-\
+9a72d5dbe113"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt \"\>", "\[InvisibleSpace]", "446894", 
+   "\[InvisibleSpace]", "\<\" isolierte W\[ODoubleDot]rter.\"\>"}],
+  SequenceForm["Es gibt ", 446894, " isolierte W\[ODoubleDot]rter."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618759476177*^9},ExpressionUUID->"3514b128-0535-4446-8ffd-\
+6a9896f867a9"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "595409", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 595409, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187619961805`*^9},ExpressionUUID->"6f48a366-dfb1-403d-b0ed-\
+154eb228faca"]
+}, Open  ]],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partd",
+   "\"Part specification \\!\\(\\*RowBox[{\\\"x\\\", \\\"\[LeftDoubleBracket]\
+\\\", \\\"1\\\", \\\"\[RightDoubleBracket]\\\"}]\\) is longer than depth of \
+object.\"",2,12,1,33566722760702246987,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.849613620370982*^9, 3.84961450471222*^9, 3.8496157719339943`*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.849616141914512*^9, {
+   3.8496164826549892`*^9, 3.8496165346550617`*^9}, 3.84961658302513*^9, {
+   3.849616614765174*^9, 3.8496166264851904`*^9}, 3.8496167801164055`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180327191596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294669526*^9, 3.849618333799581*^9, 
+   3.8496187647061844`*^9},ExpressionUUID->"1b186475-40ff-4789-9ae8-\
+cc17dd49710b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "194464", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 194464, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618765216185*^9},ExpressionUUID->"e8cd5dcf-2829-4242-aa8c-\
+1e9a5a534bfc"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "16927", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 16927, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187756962*^9},ExpressionUUID->"73f72c3a-0619-43dc-a1b2-5dc6fefecf23"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "2839", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 2839, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187758162003`*^9},ExpressionUUID->"4d8e5050-466d-413a-aa0b-\
+60f3bf0c895c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "3063", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 3063, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187779562035`*^9},ExpressionUUID->"b8a8eb6d-e876-4441-999f-\
+7d3ea2343bb7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "209", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 209, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618777976203*^9},ExpressionUUID->"64723e2d-a4de-475b-b139-\
+e1adfd956732"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "916", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 916, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187798062057`*^9},ExpressionUUID->"da5f3985-811c-4497-b1f2-\
+6036270c96b3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 25, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187798162055`*^9},ExpressionUUID->"fe7cc050-39a3-42c1-bee4-\
+6090a33880e0"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "388", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 388, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618781616208*^9},ExpressionUUID->"789f4fe7-7558-4515-b512-\
+18efe376ebdf"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 1, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618781616208*^9},ExpressionUUID->"84cd2890-4c9f-40dc-ac48-\
+13ab0b3b6e14"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "86", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 86, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618783386211*^9},ExpressionUUID->"5ddf0bdc-6c76-4277-937e-\
+cd4e87c2e66d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 2, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187833962107`*^9},ExpressionUUID->"d3dddb7f-055d-4aec-87bd-\
+9f2441c4c72e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "21", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 21, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187851762133`*^9},ExpressionUUID->"c7208e7d-84c6-4360-a42f-\
+da8f23c68f77"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"\<\"erzbach\"\>", ",", "\<\"sattsam\"\>", 
+     ",", "\<\"einstand\"\>", ",", "\<\"hochmuts\"\>", 
+     ",", "\<\"textraum\"\>", ",", "\<\"feierraum\"\>", 
+     ",", "\<\"neulingen\"\>", ",", "\<\"psychogen\"\>", 
+     ",", "\<\"spielgeld\"\>", ",", "\<\"wehrbaues\"\>", 
+     ",", "\<\"wendlands\"\>", ",", "\<\"aufzuhaben\"\>", 
+     ",", "\<\"blockbaues\"\>", ",", "\<\"brandseite\"\>", 
+     ",", "\<\"doppelwall\"\>", ",", "\<\"metallbaus\"\>", 
+     ",", "\<\"weltraumes\"\>", ",", "\<\"anzuzettelnd\"\>", 
+     ",", "\<\"umherwerfend\"\>", ",", "\<\"herausquellend\"\>", 
+     ",", "\<\"herunterbrachen\"\>"}], "}"}]}],
+  SequenceForm[
+  "Flatten@einNachbar: ", {
+   "erzbach", "sattsam", "einstand", "hochmuts", "textraum", "feierraum", 
+    "neulingen", "psychogen", "spielgeld", "wehrbaues", "wendlands", 
+    "aufzuhaben", "blockbaues", "brandseite", "doppelwall", "metallbaus", 
+    "weltraumes", "anzuzettelnd", "umherwerfend", "herausquellend", 
+    "herunterbrachen"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187851762133`*^9},ExpressionUUID->"257d2c67-82d3-4322-be8c-\
+07d62e9e17a9"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187851762133`*^9},ExpressionUUID->"cc808e2c-2c14-4ffc-ad31-\
+426562d71746"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 7, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187869462156`*^9},ExpressionUUID->"edaf8405-68c3-4b48-8ea1-\
+6d82d174218a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"\<\"erbach\"\>", ",", "\<\"sittsam\"\>", ",", "\<\"hochmuss\"\>",
+      ",", "\<\"spielgel\"\>", ",", "\<\"feuerraum\"\>", 
+     ",", "\<\"weltraums\"\>", ",", "\<\"doppelfall\"\>"}], "}"}]}],
+  SequenceForm[
+  "Flatten@einNachbar: ", {
+   "erbach", "sittsam", "hochmuss", "spielgel", "feuerraum", "weltraums", 
+    "doppelfall"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187869462156`*^9},ExpressionUUID->"6b272fc0-4854-4ef0-ad3c-\
+bde557f77a6e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187869462156`*^9},ExpressionUUID->"3e632a5e-e857-4923-920e-\
+94f0d082c808"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 2, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618788716218*^9},ExpressionUUID->"03b6737c-62bb-4f20-93aa-\
+4e778b2f36ab"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"\<\"weltraum\"\>", ",", "\<\"feuerbaum\"\>"}], "}"}]}],
+  SequenceForm["Flatten@einNachbar: ", {"weltraum", "feuerbaum"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618788716218*^9},ExpressionUUID->"2369b267-08af-4bc4-b014-\
+850337e3acff"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618788716218*^9},ExpressionUUID->"257fbbff-a01f-4f17-ab59-\
+8ee2e65d77ad"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 1, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618790486221*^9},ExpressionUUID->"f8056bf5-cc4e-40c6-9495-\
+9563d5733281"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "\<\"weltbaum\"\>", "}"}]}],
+  SequenceForm["Flatten@einNachbar: ", {"weltbaum"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618790486221*^9},ExpressionUUID->"05fb4772-c0ab-4610-a0a1-\
+004df50f2360"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618790486221*^9},ExpressionUUID->"789fc29a-fb7b-449f-b664-\
+b1604ed78d9b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 1, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618792256223*^9},ExpressionUUID->"ed530f5b-449f-4a57-b144-\
+c7937c01095c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "\<\"wellbaum\"\>", "}"}]}],
+  SequenceForm["Flatten@einNachbar: ", {"wellbaum"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618792256223*^9},ExpressionUUID->"10f43dd4-b585-4600-ab45-\
+b3f9d5b1b6fe"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618792256223*^9},ExpressionUUID->"864a5b23-23fd-41f3-bc05-\
+f89755181c1c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 1, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187940062256`*^9},ExpressionUUID->"18fcf899-afa1-499f-a101-\
+6118c7a55138"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "\<\"fellbaum\"\>", "}"}]}],
+  SequenceForm["Flatten@einNachbar: ", {"fellbaum"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187940062256`*^9},ExpressionUUID->"7f2fd310-5265-42d1-b601-\
+cd97d58727cb"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618794016226*^9},ExpressionUUID->"8f779cfd-9ba1-4785-8b21-\
+8f11193df430"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 1, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187957662277`*^9},ExpressionUUID->"d1e9d078-e97e-496f-b0eb-\
+ef8835ba066f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "\<\"fallbaum\"\>", "}"}]}],
+  SequenceForm["Flatten@einNachbar: ", {"fallbaum"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618795776228*^9},ExpressionUUID->"c642d8f7-efb1-41ea-8417-\
+db3df6d46559"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618795776228*^9},ExpressionUUID->"0f82420d-0c27-46aa-a8e8-\
+47b7fe88576c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 1, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187975362306`*^9},ExpressionUUID->"20433081-5556-4b35-8fcb-\
+ed6c71edb8e2"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "\<\"fallraum\"\>", "}"}]}],
+  SequenceForm["Flatten@einNachbar: ", {"fallraum"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187975362306`*^9},ExpressionUUID->"78210b1f-5347-46f2-b793-\
+5f0ba385d0e3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187975462303`*^9},ExpressionUUID->"31135b2e-c950-4eac-bbad-\
+5b2dd9394d51"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 1, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496187992762327`*^9},ExpressionUUID->"f8267520-bd69-422f-97e5-\
+a58767842b98"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "\<\"hallraum\"\>", "}"}]}],
+  SequenceForm["Flatten@einNachbar: ", {"hallraum"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618799286233*^9},ExpressionUUID->"20edb47b-aad1-4b60-8a76-\
+f9bc192f4fb8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" isolierte Paare, die nun eine eigene \
+Zusammenhangskomponenten bilden.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, 
+   " isolierte Paare, die nun eine eigene Zusammenhangskomponenten bilden."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618799286233*^9},ExpressionUUID->"79a1c177-b09a-4b79-b347-\
+58b83e348d6a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt nun \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" W\[ODoubleDot]rter mit genau einem \
+Nachbarn.\"\>"}],
+  SequenceForm[
+  "Es gibt nun ", 0, " W\[ODoubleDot]rter mit genau einem Nachbarn."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496188010562353`*^9},ExpressionUUID->"716f6f68-bc00-4df5-a3b2-\
+44b1b0fcffe2"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Flatten@einNachbar: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "}"}]}],
+  SequenceForm["Flatten@einNachbar: ", {}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.8496188010562353`*^9},ExpressionUUID->"598cca7c-99f3-42d8-ad4b-\
+0829860a2da8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Es gibt \"\>", "\[InvisibleSpace]", "41686", 
+   "\[InvisibleSpace]", "\<\" isolierte W\[ODoubleDot]rter nach Entfernen der \
+\\\"EinNachbarn\\\".\"\>"}],
+  SequenceForm[
+  "Es gibt ", 41686, 
+   " isolierte W\[ODoubleDot]rter nach Entfernen der \"EinNachbarn\"."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.849613617060978*^9, 3.849614525322249*^9, 3.849615771833994*^9, 
+   3.8496158182040586`*^9, 3.849616094924446*^9, 3.8496161419045124`*^9, {
+   3.849616482644989*^9, 3.8496165346550617`*^9}, 3.84961658301513*^9, {
+   3.849616614765174*^9, 3.8496166264751906`*^9}, 3.8496167801064057`*^9, 
+   3.8496168869575553`*^9, 3.8496176124085712`*^9, 3.8496179590190563`*^9, {
+   3.849618021229143*^9, 3.8496180326991596`*^9}, {3.849618202619397*^9, 
+   3.8496182194394207`*^9}, 3.849618294659526*^9, 3.849618333769581*^9, 
+   3.849618802946238*^9},ExpressionUUID->"2ffe420e-45f2-43ae-9e8c-\
+c650ea575547"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "Das", " ", "hier", " ", "ist", " ", "ineffiziert", " ", "programmiert"}],
+     ",", " ", 
+    RowBox[{
+     RowBox[{"weil", " ", "wir", " ", "c1N"}], "-", 
+     RowBox[{
+     "mal", " ", "die", " ", "gesamte", " ", "W\[ODoubleDot]rterliste", " ", 
+      RowBox[{"durchgehen", ".", "\[IndentingNewLine]", "Das"}], " ", "ist", 
+      " ", "aber", " ", "egal"}]}], ",", " ", 
+    RowBox[{
+    "weil", " ", "es", " ", "auch", " ", "so", " ", "nicht", " ", "lange", 
+     " ", 
+     RowBox[{"dauert", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"Do", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "Wir", " ", "vergr\[ODoubleDot]\[SZ]ern", " ", "die", " ", "Komponente",
+        " ", 
+       RowBox[{"i", ":"}]}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+       "komponentenListe", "\[LeftDoubleBracket]", "i", 
+        "\[RightDoubleBracket]"}], "=", 
+       RowBox[{"Join", "[", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+          "Wir", " ", "wenden", " ", "die", " ", 
+           "\"\<nachAu\[SZ]en\[LeftDoubleBracket]cc\[RightDoubleBracket]\>\""}\
+], "-", 
+          RowBox[{"Funktion", " ", "auf", " ", "jedes", " ", "Element", " ", 
+           RowBox[{"an", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Flatten", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"x", "\[Function]", 
+             RowBox[{"Lookup", "[", 
+              RowBox[{
+               RowBox[{
+               "nachAu\[SZ]enList", "\[LeftDoubleBracket]", "cc", 
+                "\[RightDoubleBracket]"}], ",", "x", ",", 
+               RowBox[{"{", "}"}]}], "]"}]}], ")"}], "/@", 
+           RowBox[{
+           "komponentenListe", "\[LeftDoubleBracket]", "i", 
+            "\[RightDoubleBracket]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{
+           "und", " ", "f\[UDoubleDot]gen", " ", "es", " ", "zu", " ", "den", 
+            " ", "W\[ODoubleDot]rtern", " ", "hinzu"}], ",", " ", 
+           RowBox[{
+           "die", " ", "schon", " ", "in", " ", "der", " ", "Komponente", " ", 
+            RowBox[{"sind", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+         "komponentenListe", "\[LeftDoubleBracket]", "i", 
+          "\[RightDoubleBracket]"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"Length", "@", "komponentenListe"}]}], "}"}]}], 
+     "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{
+      "Wir", " ", "m\[UDoubleDot]ssen", " ", "zuerste", " ", "die", " ", 
+       "innersten", " ", "W\[ODoubleDot]rter", " ", 
+       "hinzuf\[UDoubleDot]gen"}], ",", " ", 
+      RowBox[{
+      "daher", " ", "gehen", " ", "wir", " ", "von", " ", "c1N", " ", "nach", 
+       " ", "1"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"cc", ",", "c1N", ",", "1", ",", 
+      RowBox[{"-", "1"}]}], "}"}]}], "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.849617194717986*^9, 3.8496171961979885`*^9}, {
+  3.849617671688654*^9, 3.849617693238684*^9}, {3.849617724558728*^9, 
+  3.849617879608945*^9}, {3.84961794740904*^9, 3.8496179519690466`*^9}, {
+  3.8496182070194035`*^9, 3.849618207399404*^9}, {3.849618265879486*^9, 
+  3.8496182907995205`*^9}, {3.8496186982260914`*^9, 
+  3.8496186989660926`*^9}},ExpressionUUID->"fedf7ea0-1806-4b62-99c2-\
+55cdf8a25a73"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SortBy", "[", 
+  RowBox[{"komponentenListe", ",", "Length"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8496189062463827`*^9, 
+  3.849618949666444*^9}},ExpressionUUID->"a4a8a8eb-4060-4d62-9ca5-\
+76b4d4b8b7ae"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[
+   FrameBox[GridBox[{
+      {
+       ItemBox[
+        TagBox[
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            
+            RowBox[{"\<\"aalbestand\"\>", ",", "\<\"aalbestandes\"\>", 
+             ",", "\<\"aalbestands\"\>"}], "}"}], ",", 
+           TemplateBox[{"44760"},
+            "OutputSizeLimit`Skeleton"], ",", 
+           RowBox[{"{", 
+            
+            RowBox[{"\<\"zweittanks\"\>", ",", "\<\"zweitbrandes\"\>", 
+             ",", "\<\"zweibundes\"\>", ",", "\<\"zweilandes\"\>", 
+             ",", "\<\"zweitbrand\"\>", ",", "\<\"zweibund\"\>", 
+             ",", "\<\"zweihand\"\>", ",", "\<\"zweittank\"\>", 
+             ",", "\<\"zweitbandes\"\>", ",", "\<\"zweitbank\"\>", 
+             ",", "\<\"zweibandes\"\>", ",", "\<\"zweitband\"\>", 
+             ",", "\<\"zweibades\"\>", ",", "\<\"zweiband\"\>", 
+             ",", "\<\"zweirades\"\>", ",", "\<\"zweibad\"\>", 
+             ",", "\<\"zweirads\"\>", ",", "\<\"zweirad\"\>"}], "}"}]}], "}"}],
+         Short[#, 5]& ],
+        BaseStyle->{Deployed -> False},
+        StripOnInput->False]},
+      {GridBox[{
+         {
+          TagBox[
+           TooltipBox[
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource[
+                "FEStrings", "sizeBriefExplanation"], StandardForm],
+               ImageSizeCache->{104., {4., 14.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLText",
+             StripOnInput->False],
+            StyleBox[
+             DynamicBox[
+              ToBoxes[
+               FEPrivate`FrontEndResource["FEStrings", "sizeExplanation"], 
+               StandardForm]], DynamicUpdating -> True, StripOnInput -> 
+             False]],
+           Annotation[#, 
+            Style[
+             Dynamic[
+              FEPrivate`FrontEndResource["FEStrings", "sizeExplanation"]], 
+             DynamicUpdating -> True], "Tooltip"]& ], 
+          ButtonBox[
+           PaneSelectorBox[{False->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowLess"], 
+                StandardForm],
+               ImageSizeCache->{82., {1., 14.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControl",
+             StripOnInput->False], True->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowLess"], 
+                StandardForm]],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControlActive",
+             StripOnInput->False]}, Dynamic[
+             CurrentValue["MouseOver"]],
+            Alignment->Center,
+            FrameMargins->0,
+            ImageSize->{Automatic, 25}],
+           Appearance->None,
+           BaselinePosition->Baseline,
+           
+           ButtonFunction:>OutputSizeLimit`ButtonFunction[
+            OutputSizeLimit`Defer, 22, 33566722760702246987, 5/2],
+           Enabled->True,
+           Evaluator->Automatic,
+           Method->"Queued"], 
+          ButtonBox[
+           PaneSelectorBox[{False->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowMore"], 
+                StandardForm],
+               ImageSizeCache->{98., {1., 14.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControl",
+             StripOnInput->False], True->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowMore"], 
+                StandardForm]],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControlActive",
+             StripOnInput->False]}, Dynamic[
+             CurrentValue["MouseOver"]],
+            Alignment->Center,
+            FrameMargins->0,
+            ImageSize->{Automatic, 25}],
+           Appearance->None,
+           BaselinePosition->Baseline,
+           
+           ButtonFunction:>OutputSizeLimit`ButtonFunction[
+            OutputSizeLimit`Defer, 22, 33566722760702246987, 5 2],
+           Enabled->True,
+           Evaluator->Automatic,
+           Method->"Queued"], 
+          ButtonBox[
+           PaneSelectorBox[{False->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowAll"], 
+                StandardForm],
+               ImageSizeCache->{71., {1., 14.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControl",
+             StripOnInput->False], True->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeShowAll"], 
+                StandardForm],
+               ImageSizeCache->{71., {1., 14.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControlActive",
+             StripOnInput->False]}, Dynamic[
+             CurrentValue["MouseOver"]],
+            Alignment->Center,
+            FrameMargins->0,
+            ImageSize->{Automatic, 25}],
+           Appearance->None,
+           BaselinePosition->Baseline,
+           
+           ButtonFunction:>OutputSizeLimit`ButtonFunction[
+            OutputSizeLimit`Defer, 22, 33566722760702246987, Infinity],
+           Enabled->True,
+           Evaluator->Automatic,
+           Method->"Queued"], 
+          ButtonBox[
+           PaneSelectorBox[{False->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeChangeLimit"], 
+                StandardForm],
+               ImageSizeCache->{121., {1., 14.}}],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControl",
+             StripOnInput->False], True->
+            StyleBox[
+             StyleBox[
+              DynamicBox[ToBoxes[
+                FEPrivate`FrontEndResource["FEStrings", "sizeChangeLimit"], 
+                StandardForm]],
+              StripOnInput->False,
+              DynamicUpdating->True], "OSLControlActive",
+             StripOnInput->False]}, Dynamic[
+             CurrentValue["MouseOver"]],
+            Alignment->Center,
+            FrameMargins->0,
+            ImageSize->{Automatic, 25}],
+           Appearance->None,
+           BaselinePosition->Baseline,
+           ButtonFunction:>FrontEndExecute[{
+              FrontEnd`SetOptions[
+              FrontEnd`$FrontEnd, 
+               FrontEnd`PreferencesSettings -> {"Page" -> "Advanced"}], 
+              FrontEnd`FrontEndToken["PreferencesDialog"]}],
+           Evaluator->None,
+           Method->"Preemptive"]}
+        },
+        AutoDelete->False,
+        FrameStyle->GrayLevel[0.85],
+        GridBoxDividers->{"Columns" -> {False, {True}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+        GridBoxSpacings->{"Columns" -> {{2}}}]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxDividers->{
+      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+       "RowsIndexed" -> {}},
+     GridBoxItemSize->{
+      "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], 
+         Offset[1.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    BaseStyle->"OutputSizeLimit",
+    FrameMargins->{{12, 12}, {0, 15}},
+    FrameStyle->GrayLevel[0.85],
+    RoundingRadius->5,
+    StripOnInput->False],
+   Deploy,
+   DefaultBaseStyle->"Deploy"],
+  If[33566722760702246987 === $SessionID, 
+   Out[22], Message[
+     MessageName[Syntax, "noinfoker"]]; Missing["NotAvailable"]; 
+   Null]]], "Output",
+ CellChangeTimes->{{3.849618908606386*^9, 
+  3.849618952866448*^9}},ExpressionUUID->"fbfe109b-1158-4ed4-9038-\
+f4629834f59a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", 
+  RowBox[{"Length", "/@", "germanICPartL"}], "]"}]], "Input",
+ CellChangeTimes->{{3.849618969906472*^9, 
+  3.8496189781464834`*^9}},ExpressionUUID->"f2a7e287-18f0-4f3e-b1dc-\
+d344fe868185"],
+
+Cell[BoxData["876239"], "Output",
+ CellChangeTimes->{
+  3.8496189787464843`*^9},ExpressionUUID->"d15a7a3c-0c1a-456c-a3e4-\
+622da01d482e"]
+}, Open  ]]
+},
+WindowSize->{1904, 1008},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+Magnification:>1.6 Inherited,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 41056, 925, 4456, "Input",ExpressionUUID->"2059afea-0670-4417-bbff-9a72d5dbe113"],
+Cell[CellGroupData[{
+Cell[41661, 951, 882, 15, 34, "Print",ExpressionUUID->"3514b128-0535-4446-8ffd-6a9896f867a9"],
+Cell[42546, 968, 927, 17, 34, "Print",ExpressionUUID->"6f48a366-dfb1-403d-b0ed-154eb228faca"]
+}, Open  ]],
+Cell[43488, 988, 915, 16, 37, "Message",ExpressionUUID->"1b186475-40ff-4789-9ae8-cc17dd49710b"],
+Cell[CellGroupData[{
+Cell[44428, 1008, 979, 18, 34, "Print",ExpressionUUID->"e8cd5dcf-2829-4242-aa8c-1e9a5a534bfc"],
+Cell[45410, 1028, 919, 16, 34, "Print",ExpressionUUID->"73f72c3a-0619-43dc-a1b2-5dc6fefecf23"],
+Cell[46332, 1046, 977, 18, 34, "Print",ExpressionUUID->"4d8e5050-466d-413a-aa0b-60f3bf0c895c"],
+Cell[47312, 1066, 923, 17, 34, "Print",ExpressionUUID->"b8a8eb6d-e876-4441-999f-7d3ea2343bb7"],
+Cell[48238, 1085, 973, 18, 34, "Print",ExpressionUUID->"64723e2d-a4de-475b-b139-e1adfd956732"],
+Cell[49214, 1105, 921, 17, 34, "Print",ExpressionUUID->"da5f3985-811c-4497-b1f2-6036270c96b3"],
+Cell[50138, 1124, 973, 18, 34, "Print",ExpressionUUID->"fe7cc050-39a3-42c1-bee4-6090a33880e0"],
+Cell[51114, 1144, 919, 17, 34, "Print",ExpressionUUID->"789f4fe7-7558-4515-b512-18efe376ebdf"],
+Cell[52036, 1163, 969, 18, 34, "Print",ExpressionUUID->"84cd2890-4c9f-40dc-ac48-13ab0b3b6e14"],
+Cell[53008, 1183, 917, 17, 34, "Print",ExpressionUUID->"5ddf0bdc-6c76-4277-937e-cd4e87c2e66d"],
+Cell[53928, 1202, 971, 18, 34, "Print",ExpressionUUID->"d3dddb7f-055d-4aec-87bd-9f2441c4c72e"],
+Cell[54902, 1222, 919, 17, 34, "Print",ExpressionUUID->"c7208e7d-84c6-4360-a42f-da8f23c68f77"],
+Cell[55824, 1241, 1763, 32, 63, "Print",ExpressionUUID->"257d2c67-82d3-4322-be8c-07d62e9e17a9"],
+Cell[57590, 1275, 971, 18, 34, "Print",ExpressionUUID->"cc808e2c-2c14-4ffc-ad31-426562d71746"],
+Cell[58564, 1295, 917, 17, 34, "Print",ExpressionUUID->"edaf8405-68c3-4b48-8ea1-6d82d174218a"],
+Cell[59484, 1314, 1110, 21, 34, "Print",ExpressionUUID->"6b272fc0-4854-4ef0-ad3c-bde557f77a6e"],
+Cell[60597, 1337, 971, 18, 34, "Print",ExpressionUUID->"3e632a5e-e857-4923-920e-94f0d082c808"],
+Cell[61571, 1357, 915, 17, 34, "Print",ExpressionUUID->"03b6737c-62bb-4f20-93aa-4e778b2f36ab"],
+Cell[62489, 1376, 899, 16, 34, "Print",ExpressionUUID->"2369b267-08af-4bc4-b014-850337e3acff"],
+Cell[63391, 1394, 969, 18, 34, "Print",ExpressionUUID->"257fbbff-a01f-4f17-ab59-8ee2e65d77ad"],
+Cell[64363, 1414, 915, 17, 34, "Print",ExpressionUUID->"f8056bf5-cc4e-40c6-9495-9563d5733281"],
+Cell[65281, 1433, 845, 15, 34, "Print",ExpressionUUID->"05fb4772-c0ab-4610-a0a1-004df50f2360"],
+Cell[66129, 1450, 969, 18, 34, "Print",ExpressionUUID->"789fc29a-fb7b-449f-b664-b1604ed78d9b"],
+Cell[67101, 1470, 915, 17, 34, "Print",ExpressionUUID->"ed530f5b-449f-4a57-b144-c7937c01095c"],
+Cell[68019, 1489, 845, 15, 34, "Print",ExpressionUUID->"10f43dd4-b585-4600-ab45-b3f9d5b1b6fe"],
+Cell[68867, 1506, 969, 18, 34, "Print",ExpressionUUID->"864a5b23-23fd-41f3-bc05-f89755181c1c"],
+Cell[69839, 1526, 917, 17, 34, "Print",ExpressionUUID->"18fcf899-afa1-499f-a101-6118c7a55138"],
+Cell[70759, 1545, 847, 15, 34, "Print",ExpressionUUID->"7f2fd310-5265-42d1-b601-cd97d58727cb"],
+Cell[71609, 1562, 969, 18, 34, "Print",ExpressionUUID->"8f779cfd-9ba1-4785-8b21-8f11193df430"],
+Cell[72581, 1582, 917, 17, 34, "Print",ExpressionUUID->"d1e9d078-e97e-496f-b0eb-ef8835ba066f"],
+Cell[73501, 1601, 845, 15, 34, "Print",ExpressionUUID->"c642d8f7-efb1-41ea-8417-db3df6d46559"],
+Cell[74349, 1618, 969, 18, 34, "Print",ExpressionUUID->"0f82420d-0c27-46aa-a8e8-47b7fe88576c"],
+Cell[75321, 1638, 917, 17, 34, "Print",ExpressionUUID->"20433081-5556-4b35-8fcb-ed6c71edb8e2"],
+Cell[76241, 1657, 847, 15, 34, "Print",ExpressionUUID->"78210b1f-5347-46f2-b793-5f0ba385d0e3"],
+Cell[77091, 1674, 971, 18, 34, "Print",ExpressionUUID->"31135b2e-c950-4eac-bbad-5b2dd9394d51"],
+Cell[78065, 1694, 917, 17, 34, "Print",ExpressionUUID->"f8267520-bd69-422f-97e5-a58767842b98"],
+Cell[78985, 1713, 845, 15, 34, "Print",ExpressionUUID->"20edb47b-aad1-4b60-8a76-f9bc192f4fb8"],
+Cell[79833, 1730, 969, 18, 34, "Print",ExpressionUUID->"79a1c177-b09a-4b79-b347-58b83e348d6a"],
+Cell[80805, 1750, 917, 17, 34, "Print",ExpressionUUID->"716f6f68-bc00-4df5-a3b2-44b1b0fcffe2"],
+Cell[81725, 1769, 817, 15, 34, "Print",ExpressionUUID->"598cca7c-99f3-42d8-ad4b-0829860a2da8"],
+Cell[82545, 1786, 963, 18, 34, "Print",ExpressionUUID->"2ffe420e-45f2-43ae-9e8c-c650ea575547"]
+}, Open  ]]
+}, Open  ]],
+Cell[83535, 1808, 3697, 86, 466, "Input",ExpressionUUID->"fedf7ea0-1806-4b62-99c2-55cdf8a25a73"],
+Cell[CellGroupData[{
+Cell[87257, 1898, 230, 5, 45, "Input",ExpressionUUID->"a4a8a8eb-4060-4d62-9ca5-76b4d4b8b7ae"],
+Cell[87490, 1905, 8360, 217, 176, "Output",ExpressionUUID->"fbfe109b-1158-4ed4-9038-f4629834f59a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[95887, 2127, 227, 5, 45, "Input",ExpressionUUID->"f2a7e287-18f0-4f3e-b1dc-d344fe868185"],
+Cell[96117, 2134, 137, 3, 51, "Output",ExpressionUUID->"d15a7a3c-0c1a-456c-a3e4-622da01d482e"]
+}, Open  ]]
+}
+]
+*)
+
