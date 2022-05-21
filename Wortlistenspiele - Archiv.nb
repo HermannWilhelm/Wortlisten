@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24091,        528]
-NotebookOptionsPosition[     23050,        505]
-NotebookOutlinePosition[     23430,        521]
-CellTagsIndexPosition[     23387,        518]
+NotebookDataLength[     24860,        539]
+NotebookOptionsPosition[     23819,        516]
+NotebookOutlinePosition[     24198,        532]
+CellTagsIndexPosition[     24155,        529]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,15 +22,21 @@ Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
-    RowBox[{"Hier", " ", "stehen", " ", "alle", " ", "Funktionen"}], ",", " ", 
+    RowBox[{
+    "In", " ", "diesem", " ", "File", " ", "stehen", " ", "alle", " ", 
+     "Funktionen"}], ",", " ", 
     RowBox[{"die", " ", "einen", " ", "Output", " ", "produzieren"}], ",", 
     " ", 
     RowBox[{"den", " ", "ich", " ", "exportiert", " ", "habe"}], ",", " ", 
     RowBox[{
     "um", " ", "ihn", " ", "nicht", " ", "jedes", " ", "mal", " ", "neu", " ",
       "zu", " ", 
-     RowBox[{"berechnen", ".", " ", "\[IndentingNewLine]", "Funktionen"}]}], 
-    ",", " ", 
+     RowBox[{"berechnen", ".", "\[IndentingNewLine]", "Die"}], " ", 
+     "Funktionen", " ", "in", " ", "diesem", " ", "File", " ", 
+     "m\[UDoubleDot]ssen", " ", "also", " ", "nur", " ", "einmal", " ", 
+     "ausgef\[UDoubleDot]hrt", " ", 
+     RowBox[{"werden", ".", " ", "\[IndentingNewLine]", "Funktionen"}]}], ",",
+     " ", 
     RowBox[{
     "die", " ", "ich", " ", "geschrieben", " ", "und", " ", "doch", " ", 
      "nicht", " ", "benutzt", " ", "habe"}], ",", " ", 
@@ -76,8 +82,8 @@ dic\>\"", ",", "alles", ",", "\"\<List\>\""}], "]"}], ";"}]}]}]], "Input",
   3.766600818650004*^9}, {3.7666038848337717`*^9, 3.766603886441864*^9}, {
   3.848591839859168*^9, 3.848591847829179*^9}, {3.848593096574059*^9, 
   3.8485931267541013`*^9}, {3.848629388892212*^9, 3.848629515767235*^9}, {
-  3.8486364567702703`*^9, 
-  3.8486364583202724`*^9}},ExpressionUUID->"440865c1-9b31-48b2-9d3c-\
+  3.8486364567702703`*^9, 3.8486364583202724`*^9}, {3.8621376769462686`*^9, 
+  3.862137704871594*^9}},ExpressionUUID->"440865c1-9b31-48b2-9d3c-\
 97f9e8bfce36"],
 
 Cell[CellGroupData[{
@@ -85,11 +91,8 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
-   RowBox[{"Wegen", " ", "h\[ADoubleDot]ufigem", " ", "Gebrauch", " ", 
-    RowBox[{"exportiert", ":", " ", 
-     RowBox[{"Partition", " ", "in", " ", "unterschiedliche", " ", 
-      RowBox[{"L\[ADoubleDot]ngen", "."}]}]}]}], " ", "*)"}], 
-  "\[IndentingNewLine]", 
+   RowBox[{"Partition", " ", "in", " ", "unterschiedliche", " ", 
+    RowBox[{"L\[ADoubleDot]ngen", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
    "germanICPartL", " ", "ist", " ", "eine", " ", "Liste", " ", "von", " ", 
@@ -118,15 +121,14 @@ Cell[BoxData[
       RowBox[{"Liste", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
-     RowBox[{
-     "Da", " ", "germanICSortL", " ", "schon", " ", 
-      "l\[ADoubleDot]ngensortiert", " ", "ist"}], ",", " ", 
-     RowBox[{
-     "muss", " ", "f\[UDoubleDot]r", " ", "die", " ", "Partition", " ", "nur",
-       " ", "die", " ", "Position", " ", "des", " ", 
-      "n\[ADoubleDot]chstl\[ADoubleDot]ngeren", " ", "Wortes", " ", 
-      "gefunden", " ", 
-      RowBox[{"werden", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+    "germanICSortL", " ", "sind", " ", "alle", " ", "W\[ODoubleDot]rter", " ",
+      "der", " ", "L\[ADoubleDot]nge", " ", "nach", " ", 
+     RowBox[{"sortiert", ".", " ", "Deswegen"}], " ", "muss", " ", 
+     "f\[UDoubleDot]r", " ", "die", " ", "Partition", " ", "nur", " ", "die", 
+     " ", "Position", " ", "des", " ", 
+     "n\[ADoubleDot]chstl\[ADoubleDot]ngeren", " ", "Wortes", " ", "gefunden",
+      " ", 
+     RowBox[{"werden", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -135,7 +137,7 @@ Cell[BoxData[
       "W\[ODoubleDot]rter", " ", "mit", " ", "L\[ADoubleDot]nge", " ", "63", 
       " ", "bzw", " ", "65"}], ",", " ", 
      RowBox[{
-     "die", " ", "m\[UDoubleDot]ssen", " ", "aber", " ", "nicht", " ", "mit", 
+     "die", " ", "tue", " ", "ich", " ", "aber", " ", "nicht", " ", "mit", 
       " ", "in", " ", "die", " ", 
       RowBox[{"Liste", "."}]}]}], "  ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -188,15 +190,17 @@ Cell[BoxData[
 germanICPartL.txt\>\"", ",", "germanICPartL", ",", "\"\<Table\>\""}], "]"}], 
     ";"}]}]}]], "Input",
  CellChangeTimes->{{3.7663076402259336`*^9, 3.76630766624597*^9}, {
-  3.766307889646283*^9, 3.766307956746377*^9}, {3.7665946537243905`*^9, 
-  3.7665946605707817`*^9}, {3.766594777729483*^9, 3.7665948160486746`*^9}, {
-  3.766595300941409*^9, 3.7665953142141685`*^9}, {3.7669076626742015`*^9, 
-  3.7669076701436286`*^9}, {3.8485912374852114`*^9, 3.8485912834452753`*^9}, {
-  3.848594053546399*^9, 3.8485941624775515`*^9}, {3.848594400287386*^9, 
-  3.8485944633974743`*^9}, {3.8485948163989687`*^9, 3.8485948352789946`*^9}, {
-  3.848595642127127*^9, 3.8485956450771313`*^9}, {3.849064892101961*^9, 
-  3.8490648979675713`*^9}, {3.849080490536723*^9, 
-  3.849080533312169*^9}},ExpressionUUID->"51e294cd-7a7f-4994-a55b-\
+   3.766307889646283*^9, 3.766307956746377*^9}, {3.7665946537243905`*^9, 
+   3.7665946605707817`*^9}, {3.766594777729483*^9, 3.7665948160486746`*^9}, {
+   3.766595300941409*^9, 3.7665953142141685`*^9}, {3.7669076626742015`*^9, 
+   3.7669076701436286`*^9}, {3.8485912374852114`*^9, 
+   3.8485912834452753`*^9}, {3.848594053546399*^9, 3.8485941624775515`*^9}, {
+   3.848594400287386*^9, 3.8485944633974743`*^9}, {3.8485948163989687`*^9, 
+   3.8485948352789946`*^9}, {3.848595642127127*^9, 3.8485956450771313`*^9}, {
+   3.849064892101961*^9, 3.8490648979675713`*^9}, {3.849080490536723*^9, 
+   3.849080533312169*^9}, 3.8621377366170387`*^9, {3.862137817093233*^9, 
+   3.862137862856024*^9}, {3.8621378943689365`*^9, 
+   3.862137896911475*^9}},ExpressionUUID->"51e294cd-7a7f-4994-a55b-\
 219f8c4daec4"],
 
 Cell[BoxData[
@@ -261,15 +265,21 @@ Cell[BoxData[
       RowBox[{"haben", ".", " ", "Das"}], " ", "dann", " ", 
       RowBox[{
       "exportieren", ".", "\[IndentingNewLine]", 
-       "\[CapitalUDoubleDot]rspr\[UDoubleDot]nglich"}], " ", "mit", " ", 
-      "der", " ", "Funktion", " ", "neighbours", " ", 
-      RowBox[{"implementiert", ".", " ", "Es"}], " ", "geht", " ", "aber", 
-      " ", "schneller"}]}], ",", " ", 
+       "\[CapitalUDoubleDot]rspr\[UDoubleDot]nglich"}], " ", 
+      "implementiert"}]}], ",", " ", 
+    RowBox[{
+     RowBox[{
+     "indem", " ", "f\[UDoubleDot]r", " ", "jedes", " ", "Wort", " ", "mit", 
+      " ", "L\[ADoubleDot]nge", " ", "maximal", " ", "1", " ", "mehr", " ", 
+      "oder", " ", "weniger", " ", "die", " ", "Levensthein"}], "-", 
+     RowBox[{"Distanz", " ", "ausgerechnet", " ", 
+      RowBox[{"wurde", ".", "\[IndentingNewLine]", " ", "Es"}], " ", "geht", 
+      " ", "aber", " ", "schneller"}]}], ",", " ", 
     RowBox[{
      RowBox[{
      "wenn", " ", "einfach", " ", "alle", " ", "m\[ODoubleDot]glichen", " ", 
-      "erreichbaren", " ", "Zeichenketten", " ", "hingeschrieben", " ", 
-      "werden", " ", "und", " ", "dann", " ", "mit", " ", "dem", " ", 
+      "erreichbaren", " ", "Zeichenketten", " ", "berechnet", " ", "werden", 
+      " ", "und", " ", "dann", " ", "mit", " ", "dem", " ", 
       "W\[ODoubleDot]rterbuch", " ", "geschnitten", " ", 
       RowBox[{"werden", ".", "\[IndentingNewLine]", "Trotzdem"}], " ", 
       "rechnet", " ", "dieser", " ", "Befehl", " ", "hier", " ", "noch", " ", 
@@ -279,7 +289,7 @@ Cell[BoxData[
       " ", "f\[UDoubleDot]r", " ", "l"}], "=", 
      RowBox[{
       RowBox[{
-      "45", " ", "muss", " ", "es", " ", "nochmal", " ", "sepatar", " ", 
+      "45", " ", "muss", " ", "es", " ", "nochmal", " ", "separat", " ", 
        "ausgef\[UDoubleDot]hrt", " ", "werden", " ", "und", " ", "der", " ", 
        "i"}], "+", "1", "-", 
       RowBox[{"Part", " ", "auskommentiert", " ", 
@@ -423,8 +433,9 @@ neighbours_\>\"", "<>",
    3.848656971689934*^9}, {3.848657007889984*^9, 3.8486570108099885`*^9}, {
    3.849080544479808*^9, 3.849080586929236*^9}, {3.849081661369691*^9, 
    3.8490817718660107`*^9}, {3.849084416743289*^9, 3.849084447478047*^9}, {
-   3.84908448110997*^9, 
-   3.849084500134059*^9}},ExpressionUUID->"bb98d13d-be3a-4db4-bd4c-\
+   3.84908448110997*^9, 3.849084500134059*^9}, {3.8621375307540236`*^9, 
+   3.8621375339165726`*^9}, {3.8621379874846478`*^9, 
+   3.8621380626557956`*^9}},ExpressionUUID->"bb98d13d-be3a-4db4-bd4c-\
 f1544bd7876c"],
 
 Cell[BoxData[
@@ -503,9 +514,9 @@ Komponente\>\"", "<>",
    3.849337894895129*^9}},ExpressionUUID->"6f343875-fbf0-481f-9350-\
 814c9df27d87"]
 },
-WindowSize->{1904, 1022},
-WindowMargins->{{1912, Automatic}, {Automatic, 0}},
-Magnification:>1.6 Inherited,
+WindowSize->{1920, 1008},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.1 Inherited,
 FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
 StyleDefinitions->"Default.nb"
 ]
@@ -520,16 +531,16 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 2733, 60, 346, "Input",ExpressionUUID->"440865c1-9b31-48b2-9d3c-97f9e8bfce36"],
+Cell[558, 20, 3058, 66, 253, "Input",ExpressionUUID->"440865c1-9b31-48b2-9d3c-97f9e8bfce36"],
 Cell[CellGroupData[{
-Cell[3316, 84, 5121, 115, 526, "Input",ExpressionUUID->"51e294cd-7a7f-4994-a55b-219f8c4daec4"],
-Cell[8440, 201, 514, 10, 37, "Message",ExpressionUUID->"7144faae-cd01-4167-9031-1677c8252c1b"],
-Cell[8957, 213, 512, 10, 37, "Message",ExpressionUUID->"55d7b179-84cd-45f8-ba58-d58146e426b4"],
-Cell[9472, 225, 514, 10, 37, "Message",ExpressionUUID->"82d07e8f-1788-4e4a-90f9-cdb5d93f8155"],
-Cell[9989, 237, 526, 10, 37, "Message",ExpressionUUID->"1e279dcc-10c9-462d-99c8-0e6153aa6c2f"]
+Cell[3641, 90, 5177, 113, 385, "Input",ExpressionUUID->"51e294cd-7a7f-4994-a55b-219f8c4daec4"],
+Cell[8821, 205, 514, 10, 23, "Message",ExpressionUUID->"7144faae-cd01-4167-9031-1677c8252c1b"],
+Cell[9338, 217, 512, 10, 23, "Message",ExpressionUUID->"55d7b179-84cd-45f8-ba58-d58146e426b4"],
+Cell[9853, 229, 514, 10, 23, "Message",ExpressionUUID->"82d07e8f-1788-4e4a-90f9-cdb5d93f8155"],
+Cell[10370, 241, 526, 10, 23, "Message",ExpressionUUID->"1e279dcc-10c9-462d-99c8-0e6153aa6c2f"]
 }, Open  ]],
-Cell[10530, 250, 8700, 177, 826, "Input",ExpressionUUID->"bb98d13d-be3a-4db4-bd4c-f1544bd7876c"],
-Cell[19233, 429, 3813, 74, 406, "Input",ExpressionUUID->"6f343875-fbf0-481f-9350-814c9df27d87"]
+Cell[10911, 254, 9088, 184, 605, "Input",ExpressionUUID->"bb98d13d-be3a-4db4-bd4c-f1544bd7876c"],
+Cell[20002, 440, 3813, 74, 275, "Input",ExpressionUUID->"6f343875-fbf0-481f-9350-814c9df27d87"]
 }
 ]
 *)
